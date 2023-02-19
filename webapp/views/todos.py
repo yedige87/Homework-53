@@ -22,3 +22,8 @@ def add_view(request: WSGIRequest):
     # 'state_id': int(request.POST.get('state_id')),
     todo = ToDo.objects.create(**todo_data)
     return redirect(reverse('todo_view', kwargs={'pk': todo.pk}))
+
+
+def todo_view(request, pk):
+    todo = get_object_or_404(ToDo, pk=pk)
+    return render(request, 'view.html', context={'todo': todo})
