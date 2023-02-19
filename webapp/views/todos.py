@@ -27,3 +27,17 @@ def add_view(request: WSGIRequest):
 def todo_view(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
     return render(request, 'view.html', context={'todo': todo})
+
+
+def edit_view(request: WSGIRequest, pk):
+    todo = get_object_or_404(ToDo, pk=pk)
+    if request.method == "GET":
+        return render(request, 'edit.html', context={'todo': todo, 'states': states})
+    print(request.POST)
+    todo.title = request.POST.get('title')
+    todo.date_todo = request.POST.get('date_todo')
+    todo.state = request.POST.get('state')
+    todo.description = request.POST.get('description')
+    todo.save()
+    return redirect(reverse('todo_view', kwargs={'pk': todo.pk}))
+    # return redirect('todo_view', pk=todo.pk)
