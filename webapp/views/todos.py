@@ -62,3 +62,12 @@ def edit_view(request: WSGIRequest, pk):
 def todo_view(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
     return render(request, 'view.html', context={'todo': todo, 'states': states})
+
+
+def delete_view(request, pk):
+    todo = get_object_or_404(ToDo, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'delete.html', context={'todo': todo})
+    elif request.method == 'POST':
+        todo.delete()
+        return redirect('index')
