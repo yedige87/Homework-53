@@ -7,9 +7,9 @@
     <h1>Список задач (ToDo)</h1>
    <form action="{% url 'index' %}" method="POST">
         {% csrf_token %}
-        <div class="row">
+       <div class="row">
             {% if actions %}
-            <label for="">Действие:</label>
+            <label for="">Действие для выбранной задачи:</label>
             <select class="action" name="action">
                 {% for action in actions %}
                     <option value="{{action.id}}">{{action.action}}</option>
@@ -25,9 +25,11 @@
   <table>
     <tbody>
       <tr class="head">
-        <th>Выбор задачи</th>
-        <th>Id</th>
-        <th>Заголовок</th>
+          <th>
+              <a href="" class="delete-button">Удалить</a>
+          </th>
+          <th>Выбор задачи</th>
+          <th>Заголовок</th>
         <th>Дата завершения</th>
         <th>Состояние</th>
         <th>Подробнее</th>
@@ -35,10 +37,12 @@
       {% if todos %}
       {% for todo in todos %}
       <tr>
+          <td>
+          <input type="checkbox" name="delete" id={{todo.id}} value={{todo.id}} selected>
+      </td>
         <td>
-          <input type="radio" name="task" id={{todo.id}} value={{todo.id}}><Br>
+          <input type="radio" name="task" id={{todo.id}} value={{todo.id}}>
         </td>
-        <td>{{todo.id}}</td>
         <td>{{todo.title}}</td>
         <td>{{todo.date_todo}}</td>
         <td>{{todo.state}}</td>

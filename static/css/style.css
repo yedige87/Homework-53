@@ -22,6 +22,14 @@ body{
     padding: 7px 30px;
 }
 
+.delete-button{
+    background: brown;
+    color: white;
+    padding: 5px 10px;
+    margin: 0 10px;
+    text-decoration: none;
+    border-radius:10%;
+}
 .menu {
     font-size: 14px;
     line-height: 1;

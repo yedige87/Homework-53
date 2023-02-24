@@ -1,6 +1,7 @@
 from django.contrib import admin
 from webapp.models import ToDo
 
+
 # Register your models here.
 class ToDoAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'date_todo', 'state')
