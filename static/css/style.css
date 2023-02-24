@@ -88,3 +88,13 @@ td {
     display: inline-block;
     min-width: 150px;
 }
+
+.error {
+    color: red;
+    margin-left: 20px;
+}
+
+.correct {
+    color: green;
+    margin-left: 20px;
+}
