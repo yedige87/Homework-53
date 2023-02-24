@@ -1,35 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Article Create{% endblock %}
+{% block title %}ToDo Edit{% endblock %}
 {% block content %}
 <h1>Редактирование задачи</h1>
 <form action="{% url 'todo_edit' todo.id %}" method="POST">
-        {% csrf_token %}
-    <div class="disp">
-        <label class="label">Id</label>
-        <input name="id" id="id" type="text" value={{todo.id}} disabled>
-    </div>
-    <div class="disp">
-        <label class="label">Title</label>
-        <input name="title" id="title" type="text" value={{todo.title}}>
-    </div>
-    <div class="disp">
-        <label class="label">End Date</label>
-        <input name="date_todo" id="date_todo" type="text" value={{todo.date_todo}}>
-    </div>
-    <div class="disp">
-        <label class="label">State</label>
-        <select class="state" name="state" required>
-            <option disabled>Выберите статус</option>
-            {% for state in states %}
-                <option name="state" id="state" class="state" value="{{state.state}}">{{state.rus}}</option>
-            {% endfor %}
-
-        </select>
-    </div>
-    <div class="disp">
-        <span class="label">Description</span>
-        <textarea name="description" id="description" rows="10" cols="30" required>{{todo.description}}</textarea>
-    </div>
-    <input value="Сохранить" type="submit">
+    {% include 'partial/todo_input.html' with button_text="Обновить" %}
 </form>
 {% endblock %}
